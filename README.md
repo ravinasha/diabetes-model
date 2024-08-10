@@ -1,5 +1,5 @@
-ml-model-deployment-aws-ec2
+ml-model-deployment
 
 
-codes related to aws ec2 deployment
+codes related to Render deployment
 
