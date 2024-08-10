@@ -21,20 +21,20 @@ def predict_placement():
         Pregnancies = int(request.form.get('Pregnancies'))
         Glucose = int(request.form.get('Glucose'))
         BloodPressure = float(request.form.get('BloodPressure'))
-        SkinThickness = int(request.form.get('SkinThickness')) 
-        BMI = float(request.form.get('BMI'))# Ensure this is float if needed
+        SkinThickness = int(request.form.get('SkinThickness'))
+        Insulin = int(request.form.get('Insulin'))
+        BMI = float(request.form.get('BMI'))  # Ensure this is float if needed
         DiabetesPedigreeFunction = float(request.form.get('DiabetesPedigreeFunction'))
         Age = int(request.form.get('Age'))
-        Outcome = int(request.form.get('Outcome'))
 
         # Create feature array for prediction
-        features = np.array([Pregnancies,Glucose,BloodPressure,SkinThickness,BMI,DiabetesPedigreeFunction,Age,Outcome]).reshape(1, -1)
+        features = np.array([Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI, DiabetesPedigreeFunction, Age]).reshape(1, -1)
 
         # Make prediction
         result = model.predict(features)
 
-        # Example condition to interpret model output
-        if Outcome == 1:
+        # Determine result label based on prediction
+        if result[0] == 1:
             result_label = 'Diabetes'
         else:
             result_label = 'Not Diabetes'
